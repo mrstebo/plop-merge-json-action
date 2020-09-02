@@ -1,10 +1,9 @@
-'use strict';
+"use strict";
 import { expect } from "chai";
 import fs from "fs-extra";
 import nodePlop from "node-plop";
 import path from "path";
 import { MergeJsonAction, MergeJsonConfig } from "../src/merge-json-action";
-
 
 describe("MergeJsonAction", () => {
   const plop = nodePlop(path.resolve(__dirname, "plopfile.ts"));
@@ -18,33 +17,32 @@ describe("MergeJsonAction", () => {
         {
           type: "number",
           name: "age",
-          message: "Age?"
+          message: "Age?",
         },
         {
           type: "input",
           name: "favoriteDrink",
-          message: "Favorite Drink?"
-        }
+          message: "Favorite Drink?",
+        },
       ],
       actions: [
         {
           type: "mergeJson",
           path: path.resolve(__dirname, "fixtures/test_copy.json"),
           templateFile: path.resolve(__dirname, "fixtures/template.hbs"),
-        } as MergeJsonConfig
-      ]
-    })
+        } as MergeJsonConfig,
+      ],
+    });
   });
 
   beforeEach(() => {
     const sourceData = fs.readFileSync(path.resolve(__dirname, "./fixtures/test.json"));
     fs.writeFileSync(path.resolve(__dirname, "fixtures/test_copy.json"), sourceData);
-  })
+  });
 
   afterEach(() => {
     fs.removeSync(path.resolve(__dirname, "fixtures/test_copy.json"));
   });
-
 
   it("returns a success message", async () => {
     const generator = plop.getGenerator("test");
@@ -72,15 +70,15 @@ describe("MergeJsonAction", () => {
     const json = JSON.parse(String(resultData));
 
     expect(json).to.eql({
-      "id": 1,
-      "age": 24,
-      "name": "My Test",
-      "meta": {
-        "availability": "always",
-        "favoriteDrink": "Apple Juice",
-        "favoriteFood": "Cheese",
-        "overridden": true
-      }
+      id: 1,
+      age: 24,
+      name: "My Test",
+      meta: {
+        availability: "always",
+        favoriteDrink: "Apple Juice",
+        favoriteFood: "Cheese",
+        overridden: true,
+      },
     });
   });
 });

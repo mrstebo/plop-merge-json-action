@@ -24,4 +24,4 @@ export const MergeJsonAction = (plop: NodePlopAPI): void => {
 
     return `${mergeConfig.path} has been updated!`;
   });
-}
+};
