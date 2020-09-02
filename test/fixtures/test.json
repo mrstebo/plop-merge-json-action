@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "name": "My Test",
+  "meta": {
+    "availability": "always",
+    "favoriteFood": "Cheese",
+    "overridden": false
+  }
+}
