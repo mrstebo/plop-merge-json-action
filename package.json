@@ -1,6 +1,6 @@
 {
   "name": "plop-merge-json-action",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A plop action for merging JSON",
   "main": "lib/index.js",
   "scripts": {
