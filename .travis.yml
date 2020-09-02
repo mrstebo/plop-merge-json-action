@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - '10'
+cache: yarn
+after_success:
+  - 'cat ./coverage/lcov.info | ./node_modules/.bin/coveralls'
+deploy:
+  provider: npm
+  email: mrstebouk@gmail.com
+  api_key: $API_KEY
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: mrstebo/plop-merge-json-action
+    node: 10
