@@ -8,7 +8,7 @@ export interface MergeJsonConfig extends ActionConfig {
   templateFile: string;
 }
 
-export const MergeJsonAction = (plop: NodePlopAPI) => {
+export const MergeJsonAction = (plop: NodePlopAPI): void => {
   plop.setActionType("mergeJson", (answers, config) => {
     const mergeConfig = config as MergeJsonConfig;
     const sourceData = fs.readFileSync(mergeConfig.path);
